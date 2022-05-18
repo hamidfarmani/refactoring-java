@@ -3,7 +3,7 @@ package com.etraveli.refactoring;
 import com.etraveli.refactoring.model.Customer;
 import com.etraveli.refactoring.model.MovieRental;
 import com.etraveli.refactoring.service.RentalInfoService;
-import java.util.Arrays;
+import java.util.List;
 
 public class RentalApplication {
 
@@ -16,18 +16,10 @@ public class RentalApplication {
             .getStatementOfCustomer(
                 new Customer(
                     "C. U. Stomer",
-                    Arrays.asList(new MovieRental("F001", 3), new MovieRental("F002", 1))));
+                    List.of(new MovieRental("F001", 3), new MovieRental("F002", 1))));
 
     if (!result.equals(expected)) {
-      throw new AssertionError(
-          "Expected: "
-              + System.lineSeparator()
-              + String.format(expected)
-              + System.lineSeparator()
-              + System.lineSeparator()
-              + "Got: "
-              + System.lineSeparator()
-              + result);
+      throw new AssertionError(String.format("Expected: \n%s\n\nGot: \n%s", expected, result));
     }
 
     System.out.println("Success");
