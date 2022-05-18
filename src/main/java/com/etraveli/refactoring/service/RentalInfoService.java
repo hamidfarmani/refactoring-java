@@ -39,6 +39,8 @@ public class RentalInfoService {
     }
     statementResult += String.format("Amount owed is %s\n", totalAmount);
     statementResult += String.format("You earned %s frequent points\n", frequentEnterPoints);
+
+    LOGGER.info("Statement for customer {}: \n{}", customer.getName(), statementResult);
     return statementResult;
   }
 
@@ -71,15 +73,28 @@ public class RentalInfoService {
         }
         break;
     }
+    LOGGER.info(
+        "Rental amount for {} and movie {} was {}",
+        movieRental.getMovieId(),
+        movie.getTitle(),
+        rentalAmount);
     return rentalAmount.setScale(1);
   }
 
   public Integer checkAndIncrementFrequentBonus(
       MovieRental movieRental, Movie movie, Integer frequentEnterPoints) {
     frequentEnterPoints++;
+    LOGGER.info(
+        "Bonus added for rental {} and movie {}", movieRental.getMovieId(), movie.getTitle());
+
     if (movie.getCode() == NEW && movieRental.getDays() > NUMBER_OF_DAYS_FOR_NEW_MOVIES_BONUS) {
       frequentEnterPoints++;
+      LOGGER.info(
+          "New-movie-bonus added for rental {} and movie {}",
+          movieRental.getMovieId(),
+          movie.getTitle());
     }
+
     return frequentEnterPoints;
   }
 }
