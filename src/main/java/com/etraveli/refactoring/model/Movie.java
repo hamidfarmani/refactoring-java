@@ -1,11 +1,13 @@
 package com.etraveli.refactoring.model;
 
+import com.etraveli.refactoring.utils.enums.MovieCode;
+
 public class Movie {
 
   private String title;
-  private String code;
+  private MovieCode code;
 
-  public Movie(String title, String code) {
+  public Movie(String title, MovieCode code) {
 
     this.title = title;
     this.code = code;
@@ -15,7 +17,7 @@ public class Movie {
     return title;
   }
 
-  public String getCode() {
+  public MovieCode getCode() {
     return code;
   }
 }

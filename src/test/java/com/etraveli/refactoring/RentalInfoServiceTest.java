@@ -4,15 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.etraveli.refactoring.model.Customer;
 import com.etraveli.refactoring.model.MovieRental;
-import com.etraveli.refactoring.service.RentalInfo;
+import com.etraveli.refactoring.service.RentalInfoService;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-class RentalInfoTest {
-  @Mock protected RentalInfo rentalInfo;
+class RentalInfoServiceTest {
+  @Mock protected RentalInfoService rentalInfoService;
 
   @BeforeEach
   void setUp() {
@@ -27,7 +27,7 @@ class RentalInfoTest {
         List.of(new MovieRental("F001", 3), new MovieRental("F002", 1));
     Customer customer = new Customer("C. U. Stomer", movieRentals);
 
-    String result = new RentalInfo().statement(customer);
+    String result = new RentalInfoService().getStatementOfCustomer(customer);
 
     assertThat(result).isEqualTo(expected);
   }
