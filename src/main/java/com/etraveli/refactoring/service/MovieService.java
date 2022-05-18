@@ -2,6 +2,7 @@ package com.etraveli.refactoring.service;
 
 import static com.etraveli.refactoring.utils.enums.MovieCode.*;
 
+import com.etraveli.refactoring.exception.MovieNotFoundException;
 import com.etraveli.refactoring.model.Movie;
 import com.etraveli.refactoring.utils.enums.MovieCode;
 import java.util.HashMap;
@@ -34,6 +35,11 @@ public class MovieService {
   }
 
   public Movie getMovie(String movieRentalId) {
-    return movies.get(movieRentalId);
+    Movie movie = movies.get(movieRentalId);
+    if (movie == null) {
+      throw new MovieNotFoundException(
+          String.format("Could not find movie with rental id of %s", movieRentalId));
+    }
+    return movie;
   }
 }

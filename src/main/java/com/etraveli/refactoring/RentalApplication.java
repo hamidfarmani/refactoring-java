@@ -5,7 +5,7 @@ import com.etraveli.refactoring.model.MovieRental;
 import com.etraveli.refactoring.service.RentalInfoService;
 import java.util.Arrays;
 
-public class Main {
+public class RentalApplication {
 
   public static void main(String[] args) {
     String expected =
