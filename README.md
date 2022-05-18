@@ -1,21 +1,29 @@
-# Refactoring Java
+# Hamid Farmani
+I tried to keep the functionalities as is but change the package structure. Business logic moved to service package and model classes are now in their own package. The movies' code seemed to be an enum and it will be easier in the future to change, rather than having strings all over the places.
 
-The code creates an information slip about movie rentals.
-Rewrite and improve the code after your own liking.
+There were multiple "magic numbers" in the code which I tried to extract and move them in a separate file as constants.
 
-Think: you are responsible for the solution, this is a solution you will have to put your name on.
+A custom exception handler added for the time when rental can not be found. Unit tests with multiple scenarios has been implemented and logs are set.
 
-
-## Handing in the assignment
-
-Reason how you have been thinking and the decisions you took. 
-You can hand in the result any way you feel (git patch, pull-request or ZIP-file).
-Note: the Git history must be included.
-
-
-## To run the test:
-
+For the commits, I followed conventional commits and ignored not needed files or directories. Also, there's a formatter which can be run by following command:
 ```
-javac src/*.java
-java -cp src Main
+mvn com.coveo:fmt-maven-plugin:format 
+```
+
+I added the dependencies such as JUnit and AssertJ in ```pom.xml``` file. If I wanted to spend more time and there was a request for it, I would have done the following:
+* Adding at least CRUD functionalities
+* Saving the information in a real database
+* Implementing RESTful APIs for the application to have interaction with user
+* Creating a proper UI
+* More test scenarios/exception handlers
+* Dockerizing the application
+
+To build the app and run the tests:
+```
+mvn clean install
+```
+
+You may run the application with following command:
+```
+mvn exec:java -D"exec.mainClass"="com.etraveli.refactoring.RentalApplication"
 ```
