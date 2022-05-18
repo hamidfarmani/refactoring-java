@@ -1,3 +1,8 @@
+package com.etraveli.refactoring.service;
+
+import com.etraveli.refactoring.model.Customer;
+import com.etraveli.refactoring.model.Movie;
+import com.etraveli.refactoring.model.MovieRental;
 import java.util.HashMap;
 
 public class RentalInfo {
@@ -32,12 +37,14 @@ public class RentalInfo {
         }
       }
 
-      //add frequent bonus points
+      // add frequent bonus points
       frequentEnterPoints++;
       // add bonus for a two day new release rental
-      if (movies.get(r.getMovieId()).getCode() == "new" && r.getDays() > 2) frequentEnterPoints++;
+      if (movies.get(r.getMovieId()).getCode() == "new" && r.getDays() > 2) {
+        frequentEnterPoints++;
+      }
 
-      //print figures for this rental
+      // print figures for this rental
       result += "\t" + movies.get(r.getMovieId()).getTitle() + "\t" + thisAmount + "\n";
       totalAmount = totalAmount + thisAmount;
     }
