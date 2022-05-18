@@ -22,6 +22,12 @@ public class RentalInfoService {
 
   private final MovieService movieService = new MovieService();
 
+  /**
+   * * This function will gather the statement of rental for the customer.
+   *
+   * @param customer
+   * @return the statement for the customer
+   */
   public String getStatementOfCustomer(Customer customer) {
     BigDecimal totalAmount = BigDecimal.ZERO;
     Integer frequentEnterPoints = 0;
@@ -44,6 +50,13 @@ public class RentalInfoService {
     return statementResult;
   }
 
+  /**
+   * This function will calculate the amount for each rental based on days and type of the rental.
+   *
+   * @param movieRental
+   * @param movie
+   * @return BigDecimal value of amount
+   */
   public BigDecimal getRentalAmountOf(MovieRental movieRental, Movie movie) {
     BigDecimal rentalAmount = BigDecimal.ZERO;
     switch (movie.getCode()) {
@@ -81,6 +94,15 @@ public class RentalInfoService {
     return rentalAmount.setScale(1);
   }
 
+  /**
+   * * This function will check whether the movie type of rental is NEW or not. If it was, it will
+   * add extra point, otherwise, it just adds one point.
+   *
+   * @param movieRental
+   * @param movie
+   * @param frequentEnterPoints initial points
+   * @return
+   */
   public Integer checkAndIncrementFrequentBonus(
       MovieRental movieRental, Movie movie, Integer frequentEnterPoints) {
     frequentEnterPoints++;

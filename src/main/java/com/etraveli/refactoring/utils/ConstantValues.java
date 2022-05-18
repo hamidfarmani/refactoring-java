@@ -1,5 +1,9 @@
 package com.etraveli.refactoring.utils;
 
+/**
+ * This class is for gathering all magic numbers in one place configuring the numbers through the
+ * application
+ */
 public class ConstantValues {
 
   public static final Integer NUMBER_OF_DAYS_FOR_NEW_MOVIES_BONUS = 2;
